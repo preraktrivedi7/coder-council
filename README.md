@@ -11,6 +11,13 @@
     <img alt="Node 20+" src="https://img.shields.io/badge/node-20%2B-43853d">
     <img alt="paid inference off by default" src="https://img.shields.io/badge/paid%20inference-off%20by%20default-1f9d72">
   </p>
+
+  <p>
+    <a href="https://coder-council.janvikpatel.chatgpt.site">Website</a> ·
+    <a href="https://coder-council.janvikpatel.chatgpt.site/#benefits">Why Council</a> ·
+    <a href="https://coder-council.janvikpatel.chatgpt.site/compare">Compare</a> ·
+    <a href="https://coder-council.janvikpatel.chatgpt.site/get-started">Get started</a>
+  </p>
 </div>
 
 Coder Council is an open-source AI coding workspace for VS Code and the terminal.
