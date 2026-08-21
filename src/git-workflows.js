@@ -166,17 +166,28 @@ export function assertSafeVerificationCommand(command) {
     /git\s+push\b/i,
     /git\s+checkout\s+--/i,
     /\bsudo\b/i,
+    /(?:^|[;&|]\s*)(?:rd|rmdir)\s+\/[a-z]*s\b/i,
+    /(?:^|[;&|]\s*)(?:del|erase)\s+\/[a-z]*[sq]\b/i,
+    /\bremove-item\b[^\n]*(?:-recurse|-force)/i,
   ];
   if (forbidden.some((pattern) => pattern.test(command))) {
     throw new SafetyError(`Destructive or publishing verification command refused: ${command}`);
   }
 }
 
+export function verificationShell(platform = process.platform, env = process.env) {
+  if (platform === "win32") {
+    return { command: env.ComSpec || env.COMSPEC || "cmd.exe", args: ["/d", "/s", "/c"] };
+  }
+  return { command: "/bin/sh", args: ["-lc"] };
+}
+
 export async function runVerification(root, commands, signal) {
   const results = [];
+  const shell = verificationShell();
   for (const command of commands) {
     assertSafeVerificationCommand(command);
-    const result = await runCommand("/bin/sh", ["-lc", command], {
+    const result = await runCommand(shell.command, [...shell.args, command], {
       cwd: root,
       signal,
       timeoutMs: 10 * 60_000,

@@ -8,6 +8,7 @@ import {
   captureGitState,
   dedupeFindings,
   reviewWorkingTree,
+  verificationShell,
   withWriterLock,
 } from "../src/git-workflows.js";
 import { initializeProject } from "../src/store.js";
@@ -58,6 +59,14 @@ test("writer lock rejects a concurrent implementation writer", async (t) => {
   await assert.doesNotReject(withWriterLock(root, async () => {}));
 });
 
+test("verification uses the native shell on Windows", () => {
+  assert.deepEqual(verificationShell("win32", { ComSpec: "C:\\Windows\\System32\\cmd.exe" }), {
+    command: "C:\\Windows\\System32\\cmd.exe",
+    args: ["/d", "/s", "/c"],
+  });
+  assert.deepEqual(verificationShell("linux", {}), { command: "/bin/sh", args: ["-lc"] });
+});
+
 test("build uses one writer, verifies changes, and never commits or pushes", async (t) => {
   const root = await tempProject(t, { git: true });
   await initializeProject(root);
@@ -77,7 +86,7 @@ test("build uses one writer, verifies changes, and never commits or pushes", asy
     reviewers: [reviewer],
     objective: "change seed",
     planText: "change seed safely",
-    config: testConfig({ workflows: { verificationCommands: ["test \"$(cat seed.txt)\" = implemented"], allowDirtyBuild: true, autoCommit: false, autoPush: false } }),
+    config: testConfig({ workflows: { verificationCommands: ["node -e \"const fs=require('node:fs'); process.exit(fs.readFileSync('seed.txt','utf8').trim()==='implemented'?0:1)\""], allowDirtyBuild: true, autoCommit: false, autoPush: false } }),
   });
   const after = await captureGitState(root);
   assert.equal(result.verification[0].code, 0);
@@ -87,4 +96,3 @@ test("build uses one writer, verifies changes, and never commits or pushes", asy
   assert.equal(reviewer.requests[0].readOnly, true);
   assert.equal(after.commit, before.commit);
 });
-
