@@ -15,6 +15,14 @@ test("workspace attachments are bounded, deduplicated, and normalized", (t) => {
   assert.deepEqual(normalizeWorkspaceAttachments(root, ["src/index.js", path.join(root, "src/index.js")]), ["src/index.js"]);
 });
 
+test("workspace attachment paths use portable separators on Windows", () => {
+  const statSync = () => ({ isFile: () => true });
+  assert.deepEqual(
+    normalizeWorkspaceAttachments("C:\\repo", ["src\\index.js", "C:\\repo\\src\\index.js"], statSync, path.win32),
+    ["src/index.js"],
+  );
+});
+
 test("workspace attachments reject traversal, directories, and missing files", (t) => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "coder-council-files-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
