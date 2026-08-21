@@ -158,7 +158,7 @@
   },
   "scripts": {
     "check": "node --check src/extension.cjs && node --check src/council-process.cjs && node --check src/codex-app-server.cjs && node --check src/workspace-files.cjs && node --check src/webview.cjs && node --check media/main.js && node --check media/sidebar.js",
-    "test": "node --test test/*.test.cjs",
+    "test": "node --test",
     "package": "vsce package --no-dependencies --out ../../artifacts/coder-council-vscode-0.3.0.vsix"
   },
   "devDependencies": {
