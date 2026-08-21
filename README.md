@@ -13,10 +13,10 @@
   </p>
 
   <p>
-    <a href="https://coder-council.janvikpatel.chatgpt.site">Website</a> ·
-    <a href="https://coder-council.janvikpatel.chatgpt.site/#benefits">Why Council</a> ·
-    <a href="https://coder-council.janvikpatel.chatgpt.site/compare">Compare</a> ·
-    <a href="https://coder-council.janvikpatel.chatgpt.site/get-started">Get started</a>
+    <a href="https://preraktrivedi7.github.io/coder-council-site/">Website</a> ·
+    <a href="https://preraktrivedi7.github.io/coder-council-site/#benefits">Why Council</a> ·
+    <a href="https://preraktrivedi7.github.io/coder-council-site/compare/">Compare</a> ·
+    <a href="https://preraktrivedi7.github.io/coder-council-site/get-started/">Get started</a>
   </p>
 </div>
 
