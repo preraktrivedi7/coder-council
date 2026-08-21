@@ -23,10 +23,11 @@ function resolveCodexCommand(command = "codex", options = {}) {
   if (path.isAbsolute(value) || value.includes(path.sep)) return value;
 
   const executable = options.isExecutable || isExecutable;
+  const platform = options.platform || process.platform;
   const searchPaths = String(options.pathValue ?? process.env.PATH ?? "")
     .split(path.delimiter)
     .filter(Boolean);
-  if (value === "codex" && process.platform !== "win32") {
+  if (value === "codex" && platform !== "win32") {
     const home = options.homeDir || os.homedir();
     searchPaths.push(path.join(home, ".local", "bin"), "/opt/homebrew/bin", "/usr/local/bin");
   }
