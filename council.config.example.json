@@ -1,0 +1,41 @@
+{
+  "runtime": {
+    "provider": "opencode",
+    "host": "127.0.0.1",
+    "port": 4096,
+    "autoStart": true
+  },
+  "seats": {
+    "openai": { "enabled": true, "model": "auto", "role": "primary" },
+    "kimi": { "enabled": false, "model": "auto", "role": "challenger" },
+    "openrouterFree": { "enabled": false, "model": "openrouter/free", "role": "arbiter" },
+    "ollama": { "enabled": false, "model": "auto", "role": "reviewer" }
+  },
+  "routing": {
+    "default": "openai",
+    "dualModelForArchitecture": true,
+    "dualModelForSecurityReview": true,
+    "dualModelForHighImpactDecision": true
+  },
+  "debate": {
+    "independentFirst": true,
+    "maxRounds": 1,
+    "crossCritique": true,
+    "revision": true,
+    "preserveDisagreement": true
+  },
+  "budgets": { "maxModelCallsPerRun": 7, "timeoutSeconds": 600 },
+  "spending": { "allowPaidInference": false, "openRouterFreeOnly": true },
+  "privacy": {
+    "storePrompts": true,
+    "storeResponses": true,
+    "redactEnvironmentSecrets": true,
+    "telemetry": false
+  },
+  "evaluation": {
+    "enabled": true,
+    "blindComparison": true,
+    "recordHumanOutcome": true
+  }
+}
+

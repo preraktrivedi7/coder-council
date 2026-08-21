@@ -1,0 +1,168 @@
+{
+  "name": "coder-council-vscode",
+  "displayName": "Coder Council",
+  "description": "A Codex-compatible coding workspace with independent model councils, free/local models, and guided setup.",
+  "version": "0.3.0",
+  "publisher": "preraktrivedi7",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.95.0",
+    "node": ">=20"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "council",
+    "multi-model",
+    "codex",
+    "opencode",
+    "ollama"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/preraktrivedi7/coder-council.git"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./src/extension.cjs",
+  "activationEvents": [
+    "onView:council.control",
+    "onCommand:council.openWorkspace",
+    "onCommand:council.newThread",
+    "onCommand:council.setup",
+    "onCommand:council.refresh",
+    "onCommand:council.init",
+    "onCommand:council.doctor",
+    "onCommand:council.ask",
+    "onCommand:council.council",
+    "onCommand:council.plan",
+    "onCommand:council.review",
+    "onCommand:council.build",
+    "onCommand:council.cancel",
+    "onCommand:council.openConfig"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Council shows its interface in Restricted Mode but will not execute the Council CLI until the workspace is trusted.",
+      "restrictedConfigurations": [
+        "council.commandPath",
+        "council.nodePath",
+        "council.codexPath"
+      ]
+    }
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "council",
+          "title": "Coder Council",
+          "icon": "media/council.svg"
+        }
+      ]
+    },
+    "views": {
+      "council": [
+        {
+          "type": "webview",
+          "id": "council.control",
+          "name": "Threads & Setup"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "council.openWorkspace", "title": "Open Coding Workspace", "category": "Council", "icon": "$(sparkle)" },
+      { "command": "council.newThread", "title": "New Coding Thread", "category": "Council", "icon": "$(add)" },
+      { "command": "council.setup", "title": "Set Up Models and Providers", "category": "Council", "icon": "$(settings-gear)" },
+      { "command": "council.refresh", "title": "Refresh", "category": "Council", "icon": "$(refresh)" },
+      { "command": "council.init", "title": "Initialize Project", "category": "Council" },
+      { "command": "council.doctor", "title": "Run Doctor", "category": "Council" },
+      { "command": "council.ask", "title": "Ask", "category": "Council" },
+      { "command": "council.council", "title": "Run Council", "category": "Council" },
+      { "command": "council.plan", "title": "Plan Feature", "category": "Council" },
+      { "command": "council.review", "title": "Review Working Tree", "category": "Council" },
+      { "command": "council.build", "title": "Build Feature", "category": "Council" },
+      { "command": "council.cancel", "title": "Cancel Active Run", "category": "Council" },
+      { "command": "council.openConfig", "title": "Open Project Configuration", "category": "Council" }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "council.newThread",
+          "when": "view == council.control",
+          "group": "navigation@1"
+        },
+        {
+          "command": "council.refresh",
+          "when": "view == council.control",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Coder Council",
+      "properties": {
+        "council.commandPath": {
+          "type": "string",
+          "default": "",
+          "scope": "resource",
+          "description": "Optional absolute Council executable or bin/council.js path. Empty discovers this repository first, then council on PATH."
+        },
+        "council.codexPath": {
+          "type": "string",
+          "default": "codex",
+          "scope": "machine",
+          "description": "Codex CLI executable used to launch the local App Server. Authentication remains owned by Codex."
+        },
+        "council.nodePath": {
+          "type": "string",
+          "default": "node",
+          "scope": "machine",
+          "description": "Node.js executable used when Council resolves to a JavaScript file."
+        },
+        "council.defaultMode": {
+          "type": "string",
+          "enum": ["code", "plan", "ask", "review", "council"],
+          "default": "code",
+          "scope": "resource",
+          "description": "Default compose mode in the Council coding workspace."
+        },
+        "council.timeoutSeconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3600,
+          "default": 600,
+          "scope": "resource",
+          "description": "Maximum time for Council CLI operations."
+        },
+        "council.confirmBuild": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Require confirmation before starting a source-mutating Council build."
+        },
+        "council.maxOutputBytes": {
+          "type": "number",
+          "minimum": 65536,
+          "maximum": 16777216,
+          "default": 4194304,
+          "scope": "machine",
+          "description": "Maximum stdout/stderr bytes retained from one Council command."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "check": "node --check src/extension.cjs && node --check src/council-process.cjs && node --check src/codex-app-server.cjs && node --check src/workspace-files.cjs && node --check src/webview.cjs && node --check media/main.js && node --check media/sidebar.js",
+    "test": "node --test test/*.test.cjs",
+    "package": "vsce package --no-dependencies --out ../../artifacts/coder-council-vscode-0.3.0.vsix"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.95.0",
+    "@vscode/vsce": "3.9.2"
+  }
+}

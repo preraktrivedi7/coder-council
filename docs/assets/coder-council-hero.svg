@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Coder Council</title>
+  <desc id="desc">Your AI coding team</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.55" stop-color="#171236"/>
+      <stop offset="1" stop-color="#0f2c35"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#46d7b2"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="32"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="420" rx="32" fill="url(#bg)"/>
+  <circle cx="1040" cy="45" r="190" fill="#6d5dfc" opacity=".14" filter="url(#glow)"/>
+  <circle cx="115" cy="395" r="170" fill="#26c99b" opacity=".12" filter="url(#glow)"/>
+
+  <g transform="translate(112 90)">
+    <rect width="130" height="130" rx="38" fill="url(#mark)"/>
+    <circle cx="65" cy="65" r="39" fill="none" stroke="#fff" stroke-width="5" opacity=".86"/>
+    <circle cx="65" cy="22" r="7" fill="#fff"/>
+    <circle cx="108" cy="65" r="7" fill="#fff"/>
+    <circle cx="65" cy="108" r="7" fill="#fff"/>
+    <circle cx="22" cy="65" r="7" fill="#fff"/>
+    <path d="M53 48 37 65l16 17M77 48l16 17-16 17" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="278" y="158" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="61" font-weight="750" letter-spacing="-2">Coder Council</text>
+  <text x="281" y="205" fill="#b9bfd5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Your AI coding team — one workspace, many models.</text>
+
+  <g transform="translate(282 246)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="600">
+    <g><rect width="118" height="42" rx="21" fill="#ffffff" opacity=".09"/><text x="24" y="27" fill="#e8e9f3">⌘ Code</text></g>
+    <g transform="translate(132)"><rect width="112" height="42" rx="21" fill="#ffffff" opacity=".09"/><text x="24" y="27" fill="#e8e9f3">Plan</text></g>
+    <g transform="translate(258)"><rect width="124" height="42" rx="21" fill="#ffffff" opacity=".09"/><text x="24" y="27" fill="#e8e9f3">Review</text></g>
+    <g transform="translate(396)"><rect width="132" height="42" rx="21" fill="#8b7cff" opacity=".3"/><text x="24" y="27" fill="#fff">Council</text></g>
+    <g transform="translate(542)"><rect width="156" height="42" rx="21" fill="#46d7b2" opacity=".2"/><text x="24" y="27" fill="#dffcf4">Free-first</text></g>
+  </g>
+
+  <text x="282" y="344" fill="#777f9d" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16">Codex · OpenRouter free · Ollama · OpenCode</text>
+</svg>

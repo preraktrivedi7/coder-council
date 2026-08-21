@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.pem
+*.key
+*.p12
+artifacts/*.vsix
+!artifacts/.gitkeep
+.council/
+.council/runs/
+.council/logs/
+.council/evaluations/private-feedback.jsonl

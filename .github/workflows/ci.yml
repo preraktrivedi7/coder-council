@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [20, 22]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            extensions/vscode/package-lock.json
+      - run: npm ci
+      - run: npm ci --prefix extensions/vscode
+      - run: npm test
+      - run: npm run test:acceptance
+      - run: npm run test:vscode
+      - run: npm run check:vscode
+      - run: npm run check:secrets
+      - run: npm run check:public
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: extensions/vscode/package-lock.json
+      - run: npm ci --prefix extensions/vscode
+      - run: npm run package:vscode
+      - run: npm pack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coder-council-packages
+          path: |
+            artifacts/*.vsix
+            coder-council-*.tgz

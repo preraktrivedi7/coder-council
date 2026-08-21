@@ -1,0 +1,71 @@
+{
+  "name": "coder-council",
+  "version": "0.3.0",
+  "description": "A local-first coding workspace where independent AI models challenge, review, and verify each other.",
+  "type": "module",
+  "bin": {
+    "coder-council": "./bin/council.js",
+    "council": "./bin/council.js"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/preraktrivedi7/coder-council#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preraktrivedi7/coder-council.git"
+  },
+  "bugs": {
+    "url": "https://github.com/preraktrivedi7/coder-council/issues"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "codex",
+    "multi-model",
+    "ollama",
+    "openrouter",
+    "vscode"
+  ],
+  "files": [
+    "bin",
+    "docs/ARCHITECTURE.md",
+    "docs/AUTH.md",
+    "docs/COST_MODEL.md",
+    "docs/EVALUATION.md",
+    "docs/ROADMAP.md",
+    "docs/SECURITY.md",
+    "docs/TROUBLESHOOTING.md",
+    "docs/UPSTREAM_VERIFIED.md",
+    "docs/VSCODE.md",
+    "docs/assets/coder-council-hero.svg",
+    "extensions/vscode/LICENSE",
+    "extensions/vscode/README.md",
+    "extensions/vscode/package.json",
+    "extensions/vscode/media",
+    "extensions/vscode/src",
+    "prompts",
+    "scripts",
+    "src",
+    "council.config.example.json",
+    "install.sh",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:acceptance": "node --test test/acceptance.test.js",
+    "test:vscode": "npm --prefix extensions/vscode test",
+    "check:vscode": "npm --prefix extensions/vscode run check",
+    "package:vscode": "npm --prefix extensions/vscode run package",
+    "check:public": "node scripts/check-public.js",
+    "smoke:openai": "node scripts/live-smoke.js openai",
+    "smoke:kimi": "node scripts/live-smoke.js kimi",
+    "smoke:openrouter": "node scripts/live-smoke.js openrouterFree",
+    "smoke:ollama": "node scripts/live-smoke.js ollama",
+    "smoke:council": "node scripts/live-smoke.js council",
+    "check:secrets": "node scripts/check-secrets.js"
+  }
+}
