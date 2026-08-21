@@ -70,4 +70,6 @@ run directory.
 forces seats read-only, deduplicates findings, and verifies the source fingerprint
 did not change. `build` takes an exclusive `.council/build.lock`, allows one writer,
 runs configured verification commands, uses read-only reviewers, and applies any
-accepted follow-up through the same writer sequentially.
+accepted follow-up through the same writer sequentially. Verification strings run
+through Node's OS-native shell selection so the workflow behaves consistently on
+macOS, Linux, and Windows; destructive and publishing commands remain denied.

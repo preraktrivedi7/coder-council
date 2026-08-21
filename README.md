@@ -6,6 +6,7 @@
 
   <p>
     <a href="https://github.com/preraktrivedi7/coder-council/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/preraktrivedi7/coder-council/actions/workflows/ci.yml/badge.svg"></a>
+    <a href="https://github.com/preraktrivedi7/coder-council/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/preraktrivedi7/coder-council?color=6d5dfc"></a>
     <a href="LICENSE"><img alt="Apache-2.0 license" src="https://img.shields.io/badge/license-Apache--2.0-6d5dfc"></a>
     <img alt="Node 20+" src="https://img.shields.io/badge/node-20%2B-43853d">
     <img alt="paid inference off by default" src="https://img.shields.io/badge/paid%20inference-off%20by%20default-1f9d72">
@@ -48,6 +49,10 @@ npm install
 npm link
 coder-council setup
 ```
+
+On Windows, run those manual commands in PowerShell, then download the `.vsix`
+from the [latest release](https://github.com/preraktrivedi7/coder-council/releases/latest)
+and choose **Extensions: Install from VSIX...** in VS Code.
 
 ## One workspace, five modes
 

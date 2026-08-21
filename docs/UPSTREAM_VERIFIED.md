@@ -83,6 +83,9 @@ Checked:
 - The public installer builds the VS Code extension from the same source before
   installing it. No downloaded executable or provider credential is bundled in the
   repository.
+- Release CI runs on Ubuntu, macOS, and Windows with Node 20 and 22. The hosted
+  matrix verifies portable prompt paths, workspace attachment paths, test discovery,
+  and OS-native build verification before release artifacts are published.
 
 ## Kimi For Coding (optional)
 
