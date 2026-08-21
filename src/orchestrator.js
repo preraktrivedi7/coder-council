@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { CouncilError, ValidationError } from "./errors.js";
 import {
   STRUCTURED_SHAPES,
@@ -15,7 +16,7 @@ import { clone, createId, isoNow, sha256, withTimeout } from "./utils.js";
 const PROMPT_NAMES = ["candidate", "critic", "reviser", "arbiter", "synthesizer"];
 
 async function loadPrompts() {
-  const directory = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "prompts");
+  const directory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "prompts");
   const entries = await Promise.all(
     PROMPT_NAMES.map(async (name) => [name, (await fs.readFile(path.join(directory, `${name}.md`), "utf8")).trim()]),
   );
