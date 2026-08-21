@@ -175,21 +175,14 @@ export function assertSafeVerificationCommand(command) {
   }
 }
 
-export function verificationShell(platform = process.platform, env = process.env) {
-  if (platform === "win32") {
-    return { command: env.ComSpec || env.COMSPEC || "cmd.exe", args: ["/d", "/s", "/c"] };
-  }
-  return { command: "/bin/sh", args: ["-lc"] };
-}
-
 export async function runVerification(root, commands, signal) {
   const results = [];
-  const shell = verificationShell();
   for (const command of commands) {
     assertSafeVerificationCommand(command);
-    const result = await runCommand(shell.command, [...shell.args, command], {
+    const result = await runCommand(command, [], {
       cwd: root,
       signal,
+      shell: true,
       timeoutMs: 10 * 60_000,
     });
     results.push({ command, code: result.code, stdout: result.stdout, stderr: result.stderr });

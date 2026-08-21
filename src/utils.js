@@ -110,6 +110,7 @@ export function runCommand(command, args = [], options = {}) {
     timeoutMs = 30_000,
     input,
     maxBytes = 4 * 1024 * 1024,
+    shell = false,
   } = options;
   return withTimeout(
     (timedSignal) =>
@@ -118,6 +119,7 @@ export function runCommand(command, args = [], options = {}) {
           cwd,
           env,
           signal: timedSignal,
+          shell,
           stdio: ["pipe", "pipe", "pipe"],
         });
         let stdout = "";
@@ -141,4 +143,3 @@ export function runCommand(command, args = [], options = {}) {
 export function unwrapData(value) {
   return value?.data ?? value;
 }
-
