@@ -12,12 +12,11 @@ const {
   sanitizeThread,
 } = require("../src/codex-app-server.cjs");
 
-test("Codex discovery finds the standalone installer outside VS Code's PATH on macOS and Linux", () => {
+test("Codex discovery finds the standalone installer outside VS Code's PATH on macOS and Linux", { skip: process.platform === "win32" }, () => {
   const expected = "/Users/test/.local/bin/codex";
   const resolved = resolveCodexCommand("codex", {
     pathValue: "/usr/bin:/bin",
     homeDir: "/Users/test",
-    platform: "darwin",
     isExecutable: (candidate) => candidate === expected,
   });
   assert.equal(resolved, expected);
