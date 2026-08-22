@@ -2,8 +2,8 @@
   "name": "coder-council-vscode",
   "displayName": "Coder Council",
   "description": "A Codex-compatible coding workspace with independent model councils, free/local models, and guided setup.",
-  "version": "0.3.0",
-  "publisher": "preraktrivedi7",
+  "version": "0.3.1",
+  "publisher": "coder-council",
   "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.95.0",
@@ -159,7 +159,7 @@
   "scripts": {
     "check": "node --check src/extension.cjs && node --check src/council-process.cjs && node --check src/codex-app-server.cjs && node --check src/workspace-files.cjs && node --check src/webview.cjs && node --check media/main.js && node --check media/sidebar.js",
     "test": "node --test",
-    "package": "vsce package --no-dependencies --out ../../artifacts/coder-council-vscode-0.3.0.vsix"
+    "package": "vsce package --no-dependencies --out ../../artifacts/coder-council-vscode-0.3.1.vsix"
   },
   "devDependencies": {
     "@types/vscode": "1.95.0",

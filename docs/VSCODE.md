@@ -18,11 +18,11 @@ npm --prefix extensions/vscode install
 npm run check:vscode
 npm run test:vscode
 npm run package:vscode
-code --install-extension artifacts/coder-council-vscode-0.3.0.vsix
+code --install-extension artifacts/coder-council-vscode-0.3.1.vsix
 ```
 
 If the `code` launcher is unavailable, use **Extensions: Install from VSIX…** and
-select `artifacts/coder-council-vscode-0.3.0.vsix`. Reload VS Code, open a project, then
+select `artifacts/coder-council-vscode-0.3.1.vsix`. Reload VS Code, open a project, then
 select the Coder Council icon and **Open coding workspace**.
 
 The packaged VSIX is a local build artifact and is intentionally git-ignored.

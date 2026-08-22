@@ -78,7 +78,7 @@ for name in coder-council council; do
   fi
 done
 
-VSIX="$INSTALL_ROOT/artifacts/coder-council-vscode-0.3.0.vsix"
+VSIX="$INSTALL_ROOT/artifacts/coder-council-vscode-0.3.1.vsix"
 if [ "${CODER_COUNCIL_SKIP_EXTENSION:-0}" != "1" ] && command -v code >/dev/null 2>&1; then
   say "==> Installing Coder Council for VS Code"
   code --install-extension "$VSIX" --force

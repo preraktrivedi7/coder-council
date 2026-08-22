@@ -21,7 +21,7 @@ npm install
 npm link
 npm --prefix extensions/vscode install
 npm run package:vscode
-code --install-extension artifacts/coder-council-vscode-0.3.0.vsix
+code --install-extension artifacts/coder-council-vscode-0.3.1.vsix
 ```
 
 Without the `code` launcher, run **Extensions: Install from VSIX…** in VS Code.

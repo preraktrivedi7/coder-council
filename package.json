@@ -1,7 +1,7 @@
 {
   "name": "coder-council",
-  "version": "0.3.0",
-  "description": "A local-first coding workspace where independent AI models challenge, review, and verify each other.",
+  "version": "0.3.1",
+  "description": "Open-source AI coding workspace where Codex, free cloud models, and local models challenge and verify each other.",
   "type": "module",
   "bin": {
     "coder-council": "./bin/council.js",

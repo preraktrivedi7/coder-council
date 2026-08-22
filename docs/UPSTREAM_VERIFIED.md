@@ -54,7 +54,7 @@ Checked:
 
 ## Official Codex
 
-- Installed `codex-cli 0.149.0-alpha.4` was checked locally.
+- Installed `codex-cli 0.149.0` was checked locally.
 - `codex login status` reports `Logged in using ChatGPT`.
 - `codex exec` remains an explicit fallback/sanity-check path; Council does not
   inspect Codex credentials or require an OpenAI API key when ChatGPT auth works.
@@ -77,6 +77,9 @@ Checked:
 
 ## Public setup and distribution
 
+- Community Edition `0.3.1` keeps the CLI, VS Code extension, and Council
+  orchestration free and open source; provider subscriptions and quotas remain
+  provider-owned.
 - Public setup exposes `coder-council setup` and retains `council` as a compatibility
   alias. The command initializes local state, enables only free/local optional seats,
   probes provider health without inference, and keeps paid fallback and telemetry off.
@@ -86,6 +89,9 @@ Checked:
 - Release CI runs on Ubuntu, macOS, and Windows with Node 20 and 22. The hosted
   matrix verifies portable prompt paths, workspace attachment paths, test discovery,
   and OS-native build verification before release artifacts are published.
+- A live no-store Council smoke test completed with authenticated Codex and a local
+  Ollama challenger, including isolated candidates, cross-critique, revision, and
+  synthesis. Paid inference remained disabled and the run did not degrade.
 
 ## Kimi For Coding (optional)
 

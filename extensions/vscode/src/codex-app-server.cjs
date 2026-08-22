@@ -228,7 +228,7 @@ class CodexAppServerClient extends EventEmitter {
     });
     try {
       await this.requestRaw("initialize", {
-        clientInfo: { name: "coder_council_vscode", title: "Coder Council Coding Workspace", version: "0.3.0" },
+        clientInfo: { name: "coder_council_vscode", title: "Coder Council Coding Workspace", version: "0.3.1" },
         capabilities: { experimentalApi: true },
       });
       this.notify("initialized", {});

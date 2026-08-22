@@ -34,7 +34,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      placeholder: macOS 15, Node 22, VS Code 1.100, Coder Council 0.3.0
+      placeholder: macOS 15, Node 22, VS Code 1.100, Coder Council 0.3.1
     validations:
       required: true
   - type: checkboxes
